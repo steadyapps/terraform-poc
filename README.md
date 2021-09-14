@@ -2,6 +2,7 @@
 
 Use your own terraform statefile
 
+Terraform version =  terraform-1.0.3
 # Dev
 
 terraform init -backend-config=./vars/terraform-backend-dev-roma.tfvars 
