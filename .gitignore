@@ -3,6 +3,7 @@
 .env
 .vscode
 .envrc
+.terraform.lock.hcl
 # Local .terraform directories
 **/.terraform/*
 
