@@ -106,3 +106,25 @@ variable "logging_level" {
   description = "Specifies the logging level for this configuration. This property affects the log entries pushed to Amazon CloudWatch Logs. Logging levels include ERROR, INFO, or NONE."
   default     = "ERROR"
 }
+
+
+#CLOUDWATCH
+
+variable "alarms" {
+  type = map (object({
+    alarm_name          = string
+    comparison_operator = string
+    evaluation_periods  = string
+    metric_name         = string
+    namespace           = string
+    period              = string
+    statistic           = string
+    threshold           = string
+    alarm_description   = string
+    actions_enabled     = string
+    #alarm_actions       = any
+    #ok_actions          = any
+    treat_missing_data = string
+    dimensions = any
+  }))
+}
