@@ -46,9 +46,12 @@ alarms = {
             "Cluster Name" = "prod-kafka-cluster"
             "Topic" = "Steady.Plaid.Webhook"
         }
+        iam_role_name = "Terraform-POC-Alarm1-Role"
+        iam_policy_name = "Terraform-POC-Alarm1-Policy"
+        iam_policy_description = "test alarm 1"
     },
     alarm2 = {
-        alarm_name          = "Terraform-POC-Import-Alarm"
+        alarm_name          = "Terraform-POC-Import-Alarm2"
         comparison_operator = "GreaterThanThreshold"
         evaluation_periods  = "1"
         metric_name         = "SumOffsetLag"
@@ -64,5 +67,8 @@ alarms = {
             "Cluster Name" = "prod-kafka-cluster"
             "Topic" = "Steady.Payments.WebhookReceived"
         }
+        iam_role_name = "Terraform-POC-Import-Alarm2-Role"
+        iam_policy_name = "Terraform-POC-Import-Alarm2-Policy"
+        iam_policy_description = "test imported alarm2"
     },
 }

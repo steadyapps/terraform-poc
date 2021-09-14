@@ -126,5 +126,9 @@ variable "alarms" {
     #ok_actions          = any
     treat_missing_data = string
     dimensions = any
+    iam_role_name = string
+    iam_policy_name = string
+    iam_policy_description = string
+
   }))
 }

@@ -49,4 +49,51 @@ resource "aws_cloudwatch_metric_alarm" "alarms" {
   #ok_actions          = var.ok_actions
   treat_missing_data = var.treat_missing_data
   dimensions = var.dimensions
+  datapoints_to_alarm = 1
 }  
+
+
+resource "aws_iam_role" "role" {
+  name = var.iam_role_name
+
+  assume_role_policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_policy" "policy" {
+  name        = var.iam_policy_name
+  description = var.iam_policy_description
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ec2:Describe*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "test-attach" {
+  role       = aws_iam_role.role.name
+  policy_arn = aws_iam_policy.policy.arn
+}

@@ -23,4 +23,8 @@ module "cloudwatch" {
   #ok_actions          = each.value.ok_actions
   treat_missing_data = each.value.treat_missing_data
   dimensions = each.value.dimensions
+  iam_role_name = each.value.iam_role_name
+  iam_policy_name = each.value.iam_policy_name
+  iam_policy_description = each.value.iam_policy_description
 }  
+

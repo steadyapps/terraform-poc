@@ -61,6 +61,18 @@ variable "ok_actions" {
 }
 
 
+#IAM
+
+variable "iam_role_name" {
+  type = string
+}
+variable "iam_policy_name" {
+  type = string
+}
+variable "iam_policy_description" {
+  type = string
+}
+
 
 
 

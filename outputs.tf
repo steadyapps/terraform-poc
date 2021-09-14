@@ -34,3 +34,11 @@
 # }
 
 
+# output "alarms" {
+#     value = [for a in module.cloudwatch: a.aws_cloudwatch_metric_alarm.alarms.arn]
+# }
+
+
+output "all_resources" {
+  value = { for a in keys(var.alarms) : a => module.cloudwatch[a] }
+}
