@@ -1,3 +1,3 @@
-bucket = "steady-dev-terraform-statefiles"
-key    = "terraform/providers/aws/aws-msk-dev/terraform.tfstate"
+bucket = "steady-devops-terraform-statefiles"
+key    = "terraform/providers/aws/environment/develop/terraform.tfstate"
 region = "us-east-1"
