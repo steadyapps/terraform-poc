@@ -56,36 +56,36 @@ variable "environment" {
 #   type = number
 # }
 
-variable "sns_topic_name" {
-  type = string
-}
+# variable "sns_topic_name" {
+#   type = string
+# }
 
 
 
-variable "org_name" {
-  description = "Name for this organization"
-}
-variable "workspace_name" {
-  description = "Description for the chat integration"
-}
-variable "enabled" {
-  description = "If true, will create aws chatboot and integrate to slack"
-  default     = "false"
-}
-variable "slack_channel_id" {
-  description = "Slack channel id to send budget notfication using AWS Chatbot"
-  default     = ""
-}
-variable "slack_workspace_id" {
-  description = "Slack workspace id to send budget notfication using AWS Chatbot"
-  default     = ""
-}
+# variable "org_name" {
+#   description = "Name for this organization"
+# }
+# variable "workspace_name" {
+#   description = "Description for the chat integration"
+# }
+# variable "enabled" {
+#   description = "If true, will create aws chatboot and integrate to slack"
+#   default     = "false"
+# }
+# variable "slack_channel_id" {
+#   description = "Slack channel id to send budget notfication using AWS Chatbot"
+#   default     = ""
+# }
+# variable "slack_workspace_id" {
+#   description = "Slack workspace id to send budget notfication using AWS Chatbot"
+#   default     = ""
+# }
 
-variable "slack_ids" {
-  description = "Use to define additional slack channels. Format: [ { channel = xxx, workspace=xxx }"
-  default     = {}
-  type        = any
-}
+# variable "slack_ids" {
+#   description = "Use to define additional slack channels. Format: [ { channel = xxx, workspace=xxx }"
+#   default     = {}
+#   type        = any
+# }
 
 # variable "alarm_sns_topic_arns" {
 #   description = "ARN of SNS Topic(s) to connect to AWS Chatbot"
@@ -94,41 +94,41 @@ variable "slack_ids" {
 # }
 
 
-variable "tags" {
-  description = "Specifies object tags key and value. This applies to all resources created by this module."
-  type        = map(string)
-  default = {
-    "Terraform" = true
-  }
-}
+# variable "tags" {
+#   description = "Specifies object tags key and value. This applies to all resources created by this module."
+#   type        = map(string)
+#   default = {
+#     "Terraform" = true
+#   }
+# }
 
-variable "logging_level" {
-  description = "Specifies the logging level for this configuration. This property affects the log entries pushed to Amazon CloudWatch Logs. Logging levels include ERROR, INFO, or NONE."
-  default     = "ERROR"
-}
+# variable "logging_level" {
+#   description = "Specifies the logging level for this configuration. This property affects the log entries pushed to Amazon CloudWatch Logs. Logging levels include ERROR, INFO, or NONE."
+#   default     = "ERROR"
+# }
 
 
-#CLOUDWATCH
+# #CLOUDWATCH
 
-variable "alarms" {
-  type = map (object({
-    alarm_name          = string
-    comparison_operator = string
-    evaluation_periods  = string
-    metric_name         = string
-    namespace           = string
-    period              = string
-    statistic           = string
-    threshold           = string
-    alarm_description   = string
-    actions_enabled     = string
-    #alarm_actions       = any
-    #ok_actions          = any
-    treat_missing_data = string
-    dimensions = any
-    iam_role_name = string
-    iam_policy_name = string
-    iam_policy_description = string
+# variable "alarms" {
+#   type = map (object({
+#     alarm_name          = string
+#     comparison_operator = string
+#     evaluation_periods  = string
+#     metric_name         = string
+#     namespace           = string
+#     period              = string
+#     statistic           = string
+#     threshold           = string
+#     alarm_description   = string
+#     actions_enabled     = string
+#     #alarm_actions       = any
+#     #ok_actions          = any
+#     treat_missing_data = string
+#     dimensions = any
+#     iam_role_name = string
+#     iam_policy_name = string
+#     iam_policy_description = string
 
-  }))
-}
+#   }))
+# }

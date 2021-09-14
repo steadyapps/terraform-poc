@@ -17,58 +17,58 @@ region      = "us-east-1"
 
 #Chatbot
 
-sns_topic_name = "terraform-poc"
-org_name = "Steady"
-workspace_name = "KafkaConsumerLags"
-enabled = true
-#logging_level =
-slack_channel_id = "C01F9GW420L"
-#slack_ids = 
-slack_workspace_id = "T5V4PF198"
+# sns_topic_name = "terraform-poc"
+# org_name = "Steady"
+# workspace_name = "KafkaConsumerLags"
+# enabled = true
+# #logging_level =
+# slack_channel_id = "C01F9GW420L"
+# #slack_ids = 
+# slack_workspace_id = "T5V4PF198"
 
 #CLOUDWATCH
 
-alarms = {
-    alarm1 = {
-        alarm_name          = "Terraform-POC-Alarm1"
-        comparison_operator = "GreaterThanThreshold"
-        evaluation_periods  = "1"
-        metric_name         = "SumOffsetLag"
-        namespace           = "AWS/Kafka"
-        period              = "60"
-        statistic           = "Sum"
-        threshold           = "50000"
-        alarm_description   = "test"
-        actions_enabled     = "true"
-        treat_missing_data = "ignore"
-        dimensions = {
-            "Consumer Group" = "Steady.Plaid.Transaction.Importer"
-            "Cluster Name" = "prod-kafka-cluster"
-            "Topic" = "Steady.Plaid.Webhook"
-        }
-        iam_role_name = "Terraform-POC-Alarm1-Role"
-        iam_policy_name = "Terraform-POC-Alarm1-Policy"
-        iam_policy_description = "test alarm 1"
-    },
-    alarm2 = {
-        alarm_name          = "Terraform-POC-Import-Alarm2"
-        comparison_operator = "GreaterThanThreshold"
-        evaluation_periods  = "1"
-        metric_name         = "SumOffsetLag"
-        namespace           = "AWS/Kafka"
-        period              = "60"
-        statistic           = "Sum"
-        threshold           = "666"
-        alarm_description   = "test"
-        actions_enabled     = "true"
-        treat_missing_data = "ignore"
-        dimensions = {
-            "Consumer Group" = "Steady.Payments.Response.Consumer"
-            "Cluster Name" = "prod-kafka-cluster"
-            "Topic" = "Steady.Payments.WebhookReceived"
-        }
-        iam_role_name = "Terraform-POC-Import-Alarm2-Role"
-        iam_policy_name = "Terraform-POC-Import-Alarm2-Policy"
-        iam_policy_description = "test imported alarm2"
-    },
-}
+# alarms = {
+#     alarm1 = {
+#         alarm_name          = "Terraform-POC-Alarm1"
+#         comparison_operator = "GreaterThanThreshold"
+#         evaluation_periods  = "1"
+#         metric_name         = "SumOffsetLag"
+#         namespace           = "AWS/Kafka"
+#         period              = "60"
+#         statistic           = "Sum"
+#         threshold           = "50000"
+#         alarm_description   = "test"
+#         actions_enabled     = "true"
+#         treat_missing_data = "ignore"
+#         dimensions = {
+#             "Consumer Group" = "Steady.Plaid.Transaction.Importer"
+#             "Cluster Name" = "prod-kafka-cluster"
+#             "Topic" = "Steady.Plaid.Webhook"
+#         }
+#         iam_role_name = "Terraform-POC-Alarm1-Role"
+#         iam_policy_name = "Terraform-POC-Alarm1-Policy"
+#         iam_policy_description = "test alarm 1"
+#     },
+#     alarm2 = {
+#         alarm_name          = "Terraform-POC-Import-Alarm2"
+#         comparison_operator = "GreaterThanThreshold"
+#         evaluation_periods  = "1"
+#         metric_name         = "SumOffsetLag"
+#         namespace           = "AWS/Kafka"
+#         period              = "60"
+#         statistic           = "Sum"
+#         threshold           = "666"
+#         alarm_description   = "test"
+#         actions_enabled     = "true"
+#         treat_missing_data = "ignore"
+#         dimensions = {
+#             "Consumer Group" = "Steady.Payments.Response.Consumer"
+#             "Cluster Name" = "prod-kafka-cluster"
+#             "Topic" = "Steady.Payments.WebhookReceived"
+#         }
+#         iam_role_name = "Terraform-POC-Import-Alarm2-Role"
+#         iam_policy_name = "Terraform-POC-Import-Alarm2-Policy"
+#         iam_policy_description = "test imported alarm2"
+#     },
+# }
