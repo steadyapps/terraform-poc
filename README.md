@@ -1,25 +1,27 @@
 # Usage
 
-Use your own terraform statefile
-
-Terraform version =  terraform-1.0.3
+Use your own backend config file with separate terraform statefile.  <br>
+Work on separate branch and the make pr to master. <br>
+Terraform version = 1.0.3  <br>
 # Dev
 
-terraform init -backend-config=./vars/terraform-backend-dev-roma.tfvars 
-# OR
-terraform init -backend-config=./vars/terraform-backend-dev-igor.tfvars 
-# OR
-terraform init -backend-config=./vars/terraform-backend-dev-anatoliy.tfvars 
-<br>
+roma:
+```terraform init -backend-config=./vars/terraform-backend-dev-roma.tfvars``` <br>
+igor:
+```terraform init -backend-config=./vars/terraform-backend-dev-igor.tfvars``` <br> 
+anatoliy:
+```terraform init -backend-config=./vars/terraform-backend-dev-anatoliy.tfvars``` <br>
+
 terraform plan -var-file=./vars/parameters-dev.tfvars
 
 
 # Prod
 
-terraform init -backend-config=./vars/terraform-backend-prod-roma.tfvars 
-# OR
-terraform init -backend-config=./vars/terraform-backend-prod-igor.tfvars 
-# OR
-terraform init -backend-config=./vars/terraform-backend-prod-anatoliy.tfvars 
-<br>
+roma:
+```terraform init -backend-config=./vars/terraform-backend-prod-roma.tfvars```  <br> 
+igor:
+```terraform init -backend-config=./vars/terraform-backend-prod-igor.tfvars```  <br>
+anatoliy:
+```terraform init -backend-config=./vars/terraform-backend-prod-anatoliy.tfvars``` <br> 
+
 terraform plan -var-file=./vars/parameters-prod.tfvars
