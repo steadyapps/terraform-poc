@@ -1,4 +1,4 @@
-//Global variables
+# Global variables
 
 variable "region" {
   type    = string
@@ -9,7 +9,7 @@ variable "environment" {
   type = string
 }
 
-//Steady Networks
+# Steady Networks
 
 variable "vpc_id" {
   description = "vpc_id"
@@ -26,11 +26,12 @@ variable "EKS_VPC_CIDR" {
   default = "10.17.0.0/16"
 }
 
-//Services
+# Services
 
 variable "msk" {
   type = map(object({
     cluster_name    = string
+    kafka_version   = string
     ebs_volume_size = number
     instance_type   = string
     net_offset      = number

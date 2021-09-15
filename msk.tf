@@ -6,7 +6,7 @@ module "msk" {
   vpc_id          = var.vpc_id
   EKS_VPC_CIDR    = var.EKS_VPC_CIDR
   steady_VPC_CIDR = var.steady_VPC_CIDR
-
+  kafka_version   = var.kafka_version
   cluster_name    = each.value.cluster_name
   ebs_volume_size = each.value.ebs_volume_size
   net_offset      = each.value.net_offset
