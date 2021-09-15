@@ -9,17 +9,17 @@ PROPERTIES
 }
 
 resource "aws_kms_key" "kms" {
-  description = "msk kms key for ${var.environment}"
+  description = "msk kms key for cluster ${var.cluster_name}-${var.environment}"
 }
 
 resource "aws_kms_alias" "a" {
-  name          = "alias/msk-key-${var.environment}"
+  name          = "alias/msk-key-${var.cluster_name}-${var.environment}"
   target_key_id = aws_kms_key.kms.key_id
 }
 
 resource "aws_msk_cluster" "kafka" {
   depends_on             = [aws_msk_configuration.config]
-  cluster_name           = var.cluster_name
+  cluster_name           = "${var.cluster_name}-${var.environment}"
   kafka_version          = var.kafka_version
   number_of_broker_nodes = 3
 
