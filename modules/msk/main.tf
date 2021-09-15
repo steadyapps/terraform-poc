@@ -51,7 +51,7 @@ resource "aws_msk_cluster" "kafka" {
     }
   }
   tags = {
-    Name        = "steady-msk-kafka-${var.environment}"
+    Name        = "${var.cluster_name}-${var.environment}"
     Environment = var.environment
   }
 }
