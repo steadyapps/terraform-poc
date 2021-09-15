@@ -55,3 +55,11 @@ variable "EKS_VPC_CIDR" {
 variable "net_offset" {
   type = number
 }
+
+variable "server_properties" {
+  default = <<PROPERTIES
+auto.create.topics.enable = true
+delete.topic.enable = true
+log.retention.ms = 259200000
+PROPERTIES
+}

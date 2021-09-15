@@ -1,11 +1,7 @@
 resource "aws_msk_configuration" "config" {
   kafka_versions    = [var.kafka_version]
-  name              = "msk-config-${var.environment}"
-  server_properties = <<PROPERTIES
-auto.create.topics.enable = true
-delete.topic.enable = true
-log.retention.ms = 259200000
-PROPERTIES
+  name              = "msk-config-${var.cluster_name}-${var.environment}"
+  server_properties = var.server_properties
 }
 
 resource "aws_kms_key" "kms" {
@@ -31,7 +27,7 @@ resource "aws_msk_cluster" "kafka" {
       aws_subnet.subnet_az3.id,
     ]
     security_groups = [aws_security_group.sg.id]
-    ebs_volume_size = 100
+    ebs_volume_size = var.ebs_volume_size
   }
 
   configuration_info {
