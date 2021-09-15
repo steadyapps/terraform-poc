@@ -13,7 +13,7 @@ variable "environment" {
 
 variable "vpc_id" {
   description = "vpc_id"
-  default = "vpc-0a655d3511e10849d"
+  default     = "vpc-0a655d3511e10849d"
 }
 
 variable "steady_VPC_CIDR" {
@@ -29,7 +29,7 @@ variable "EKS_VPC_CIDR" {
 //Services
 
 variable "msk" {
-  type        = map(object({
+  type = map(object({
     cluster_name    = string
     ebs_volume_size = number
     instance_type   = string

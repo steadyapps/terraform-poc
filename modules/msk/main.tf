@@ -6,11 +6,19 @@ resource "aws_msk_configuration" "config" {
 
 resource "aws_kms_key" "kms" {
   description = "msk kms key for cluster ${var.cluster_name}-${var.environment}"
+  tags = {
+    Name        = "msk-key-${var.cluster_name}-${var.environment}"
+    Environment = var.environment
+  }
 }
 
 resource "aws_kms_alias" "a" {
   name          = "alias/msk-key-${var.cluster_name}-${var.environment}"
   target_key_id = aws_kms_key.kms.key_id
+  tags = {
+    Name        = "msk-key-${var.cluster_name}-${var.environment}"
+    Environment = var.environment
+  }
 }
 
 resource "aws_msk_cluster" "kafka" {
