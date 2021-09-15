@@ -1,7 +1,7 @@
 .terraform
 .idea
 .env
-!.envrc
+.envrc
 .vscode
 .terraform.lock.hcl
 # Local .terraform directories
