@@ -9,6 +9,10 @@ variable "environment" {
   type = string
 }
 
+variable "domain" {
+  type = string
+}
+
 # Steady Networks
 
 variable "vpc_id" {
@@ -35,6 +39,8 @@ variable "msk" {
     ebs_volume_size = number
     instance_type   = string
     net_offset      = number
+    create_cname    = bool
+    cname_prefix    = string
   }))
   description = "MSK clusters"
 }

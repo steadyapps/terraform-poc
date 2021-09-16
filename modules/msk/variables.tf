@@ -3,6 +3,22 @@ variable "kafka_version" {
   default = "2.7.0"
 }
 
+variable "create_cname" {
+  type = bool
+  default = false
+}
+
+variable "domain" {
+  type = string
+  default = ""
+}
+
+variable "cname_prefix" {
+  type = string
+  default = ""
+}
+
+
 variable "cluster_name" {
   type = string
 }
