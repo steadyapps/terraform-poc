@@ -21,7 +21,7 @@ resource "aws_msk_cluster" "kafka" {
   depends_on             = [aws_msk_configuration.config]
   cluster_name           = "${var.cluster_name}-${var.environment}"
   kafka_version          = var.kafka_version
-  number_of_broker_nodes = 3
+  number_of_broker_nodes = var.number_of_broker_nodes
 
   broker_node_group_info {
     instance_type = var.instance_type

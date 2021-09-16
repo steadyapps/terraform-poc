@@ -34,13 +34,14 @@ variable "EKS_VPC_CIDR" {
 
 variable "msk" {
   type = map(object({
-    cluster_name    = string
-    kafka_version   = string
-    ebs_volume_size = number
-    instance_type   = string
-    net_offset      = number
-    create_cname    = bool
-    cname_prefix    = string
+    cluster_name           = string
+    number_of_broker_nodes = number
+    kafka_version          = string
+    ebs_volume_size        = number
+    instance_type          = string
+    net_offset             = number
+    create_cname           = bool
+    cname_prefix           = string
   }))
   description = "MSK clusters"
 }

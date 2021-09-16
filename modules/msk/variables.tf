@@ -3,18 +3,23 @@ variable "kafka_version" {
   default = "2.7.0"
 }
 
+variable "number_of_broker_nodes" {
+  type    = number
+  default = 3
+}
+
 variable "create_cname" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "domain" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "cname_prefix" {
-  type = string
+  type    = string
   default = ""
 }
 
