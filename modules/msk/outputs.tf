@@ -11,3 +11,7 @@ output "bootstrap_brokers_tls" {
   description = "TLS connection host:port pairs"
   value       = aws_msk_cluster.kafka.bootstrap_brokers_tls
 }
+
+output "subnets" {
+  value = [aws_subnet.subnet_az1.id, aws_subnet.subnet_az2.id, aws_subnet.subnet_az3.id]
+}

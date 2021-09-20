@@ -1,27 +1,27 @@
 resource "aws_msk_configuration" "config" {
   kafka_versions    = [var.kafka_version]
-  name              = "msk-config-${var.environment}"
-  server_properties = <<PROPERTIES
-auto.create.topics.enable = true
-delete.topic.enable = true
-log.retention.ms = 259200000
-PROPERTIES
+  name              = "msk-config-${var.cluster_name}-${var.environment}"
+  server_properties = var.server_properties
 }
 
 resource "aws_kms_key" "kms" {
-  description = "msk kms key for ${var.environment}"
+  description = "msk kms key for cluster ${var.cluster_name}-${var.environment}"
+  tags = {
+    Name        = "msk-key-${var.cluster_name}-${var.environment}"
+    Environment = var.environment
+  }
 }
 
 resource "aws_kms_alias" "a" {
-  name          = "alias/msk-key-${var.environment}"
+  name          = "alias/msk-key-${var.cluster_name}-${var.environment}"
   target_key_id = aws_kms_key.kms.key_id
 }
 
 resource "aws_msk_cluster" "kafka" {
   depends_on             = [aws_msk_configuration.config]
-  cluster_name           = var.cluster_name
+  cluster_name           = "${var.cluster_name}-${var.environment}"
   kafka_version          = var.kafka_version
-  number_of_broker_nodes = 3
+  number_of_broker_nodes = var.number_of_broker_nodes
 
   broker_node_group_info {
     instance_type = var.instance_type
@@ -31,7 +31,7 @@ resource "aws_msk_cluster" "kafka" {
       aws_subnet.subnet_az3.id,
     ]
     security_groups = [aws_security_group.sg.id]
-    ebs_volume_size = 100
+    ebs_volume_size = var.ebs_volume_size
   }
 
   configuration_info {
@@ -47,7 +47,7 @@ resource "aws_msk_cluster" "kafka" {
     }
   }
   tags = {
-    Name        = "steady-msk-kafka-${var.environment}"
+    Name        = "${var.cluster_name}-${var.environment}"
     Environment = var.environment
   }
 }

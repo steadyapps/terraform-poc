@@ -52,12 +52,12 @@ variable "dimensions" {
 }
 
 variable "alarm_actions" {
-  type    = list(string)
+  type = list(string)
 
 }
 
 variable "ok_actions" {
-	type    = list(string)
+  type = list(string)
 }
 
 
