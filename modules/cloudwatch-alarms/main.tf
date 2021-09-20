@@ -47,10 +47,10 @@ resource "aws_cloudwatch_metric_alarm" "alarms" {
   ok_actions          = var.ok_actions
   #alarm_actions       = var.alarm_actions
   #ok_actions          = var.ok_actions
-  treat_missing_data = var.treat_missing_data
-  dimensions = var.dimensions
+  treat_missing_data  = var.treat_missing_data
+  dimensions          = var.dimensions
   datapoints_to_alarm = 1
-}  
+}
 
 
 resource "aws_iam_role" "role" {

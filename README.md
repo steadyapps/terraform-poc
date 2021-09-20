@@ -12,7 +12,7 @@ igor:
 anatoliy:
 ```terraform init -backend-config=./vars/terraform-backend-dev-anatoliy.tfvars``` <br>
 
-terraform plan -var-file=./vars/parameters-dev.tfvars
+terraform plan -var-file=./vars/parameters-dev-roma.tfvars
 
 
 # Prod
