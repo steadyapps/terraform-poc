@@ -19,7 +19,7 @@ resource "aws_kms_alias" "a" {
 
 resource "aws_msk_cluster" "kafka" {
   depends_on             = [aws_msk_configuration.config]
-  cluster_name           = "${var.cluster_name}-${var.environment}"
+  cluster_name           = "${var.environment}-${var.cluster_name}"
   kafka_version          = var.kafka_version
   number_of_broker_nodes = var.number_of_broker_nodes
 
