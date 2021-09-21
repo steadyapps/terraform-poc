@@ -73,11 +73,10 @@ variable "EKS_VPC_CIDR" {
   type = string
 }
 
-variable "cidr" {
+variable "subnets" {
   type = map(object({
-      az1 = string
-      az2 = string
-      az3 = string
+      availability_zone = string
+      cidr = string
   }))
 }
 

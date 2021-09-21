@@ -12,10 +12,19 @@ msk = {
     net_offset             = 30
     create_cname           = true
     cname_prefix           = "kafka"
-    cidr                   = {
-      az1 = "10.18.160.0/19",
-      az2 = "10.18.128.0/19",
-      az3 = "10.18.96.0/19"
+    subnets                   = {
+      az1 = {
+        availability_zone = "use1-az6"
+        cidr = "10.18.160.0/19"
+      },
+      az2 = {
+        availability_zone = "use1-az1"
+        cidr = "10.18.128.0/19"
+      },
+      az3 = {
+        availability_zone = "use1-az2"
+        cidr = "10.18.96.0/19"
+      }
     }
   }
 }

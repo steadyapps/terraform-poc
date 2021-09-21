@@ -14,7 +14,7 @@ module "msk" {
   instance_type   = each.value.instance_type
   create_cname    = each.value.create_cname
   cname_prefix    = each.value.cname_prefix
-  cidr =  each.value.cidr
+  subnets =  each.value.subnets
 }
 
 output "msk_subnets" {

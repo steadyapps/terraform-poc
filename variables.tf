@@ -41,10 +41,9 @@ variable "msk" {
     net_offset             = number
     create_cname           = bool
     cname_prefix           = string
-    cidr                   = map(object({
-      az1 = string
-      az2 = string
-      az3 = string
+    subnets                   = map(object({
+      availability_zone = string
+      cidr = string
     }))
   }))
   description = "MSK clusters"
