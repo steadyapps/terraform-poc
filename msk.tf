@@ -11,11 +11,10 @@ module "msk" {
   kafka_version   = each.value.kafka_version
   cluster_name    = each.value.cluster_name
   ebs_volume_size = each.value.ebs_volume_size
-  net_offset      = each.value.net_offset
   instance_type   = each.value.instance_type
   create_cname    = each.value.create_cname
   cname_prefix    = each.value.cname_prefix
-
+  cidr =  each.value.cidr
 }
 
 output "msk_subnets" {

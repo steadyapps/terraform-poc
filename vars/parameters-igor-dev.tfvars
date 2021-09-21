@@ -12,16 +12,10 @@ msk = {
     net_offset             = 30
     create_cname           = true
     cname_prefix           = "kafka"
-
-  },
-  mirror = {
-    cluster_name           = "kafka-cluster-mirror"
-    kafka_version          = "2.8.0"
-    number_of_broker_nodes = 3
-    ebs_volume_size        = 100
-    instance_type          = "kafka.m5.large"
-    net_offset             = 35
-    create_cname           = true
-    cname_prefix           = "kafka-mirror"
+    cidr                   = {
+      az1 = "10.18.160.0/19",
+      az2 = "10.18.128.0/19",
+      az3 = "10.18.96.0/19"
+    }
   }
 }

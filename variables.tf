@@ -31,7 +31,6 @@ variable "EKS_VPC_CIDR" {
 }
 
 # Services
-
 variable "msk" {
   type = map(object({
     cluster_name           = string
@@ -42,6 +41,11 @@ variable "msk" {
     net_offset             = number
     create_cname           = bool
     cname_prefix           = string
+    cidr                   = map(object({
+      az1 = string
+      az2 = string
+      az3 = string
+    }))
   }))
   description = "MSK clusters"
 }

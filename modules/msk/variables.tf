@@ -73,8 +73,12 @@ variable "EKS_VPC_CIDR" {
   type = string
 }
 
-variable "net_offset" {
-  type = number
+variable "cidr" {
+  type = map(object({
+      az1 = string
+      az2 = string
+      az3 = string
+  }))
 }
 
 variable "server_properties" {
