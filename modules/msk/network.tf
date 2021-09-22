@@ -9,7 +9,7 @@ data "aws_availability_zones" "main" {
 }
 
 resource "aws_subnet" "msk" {
-  for_each = var.subnets
+  for_each          = var.subnets
   availability_zone = each.value.availability_zone
   cidr_block        = each.value.cidr
   vpc_id            = data.aws_vpc.main.id

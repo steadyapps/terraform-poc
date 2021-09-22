@@ -75,15 +75,15 @@ variable "EKS_VPC_CIDR" {
 
 variable "subnets" {
   type = map(object({
-      availability_zone = string
-      cidr = string
+    availability_zone = string
+    cidr              = string
   }))
 }
 
-variable "server_properties" {
-  default = <<PROPERTIES
-auto.create.topics.enable = true
-delete.topic.enable = true
-log.retention.ms = 259200000
-PROPERTIES
+variable "configuration_name" {
+  type = string
+}
+
+variable "configuration_revision" {
+  type = any
 }

@@ -31,19 +31,30 @@ variable "EKS_VPC_CIDR" {
 }
 
 # Services
-variable "msk" {
+# MSK
+# Configuration
+variable "msk_configurations" {
+  type = map(object({
+    name                   = string
+    kafka_versions         = list(string)
+    server_properties_file = string
+  }))
+}
+# clusters
+variable "msk_clusters" {
   type = map(object({
     cluster_name           = string
-    number_of_broker_nodes = number
+    configuration_name     = string
+    configuration_revision = any
     kafka_version          = string
+    number_of_broker_nodes = number
     ebs_volume_size        = number
     instance_type          = string
-    net_offset             = number
     create_cname           = bool
     cname_prefix           = string
-    subnets                   = map(object({
+    subnets = map(object({
       availability_zone = string
-      cidr = string
+      cidr              = string
     }))
   }))
   description = "MSK clusters"
