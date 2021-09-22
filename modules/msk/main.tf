@@ -10,13 +10,8 @@ resource "aws_kms_key" "kms" {
   }
 }
 
-resource "aws_kms_alias" "a" {
-  name          = "alias/msk-key-${local.cluster_name}"
-  target_key_id = aws_kms_key.kms.key_id
-}
-
 resource "aws_msk_cluster" "kafka" {
-  cluster_name           = "${var.environment}-${var.cluster_name}"
+  cluster_name           = local.cluster_name
   kafka_version          = var.kafka_version
   number_of_broker_nodes = var.number_of_broker_nodes
 
