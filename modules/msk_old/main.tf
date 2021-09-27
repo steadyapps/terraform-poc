@@ -3,28 +3,24 @@ data "aws_msk_configuration" "config" {
 }
 
 resource "aws_kms_key" "kms" {
-  description = "msk kms key for ${var.environment}"
-}
-
-resource "aws_kms_alias" "a" {
-  name          = "alias/msk-key-${var.environment}"
-  target_key_id = aws_kms_key.kms.key_id
+  description = "msk kms key for cluster ${local.cluster_name}"
+  tags = {
+    Name        = "msk-key-${local.cluster_name}"
+    Environment = var.environment
+  }
 }
 
 resource "aws_msk_cluster" "kafka" {
-  cluster_name           = var.cluster_name
+  cluster_name           = local.cluster_name
   kafka_version          = var.kafka_version
-  number_of_broker_nodes = 3
+  number_of_broker_nodes = var.number_of_broker_nodes
+  enhanced_monitoring    = "PER_TOPIC_PER_BROKER"
 
   broker_node_group_info {
-    instance_type = var.instance_type
-    client_subnets = [
-      aws_subnet.subnet_az1.id,
-      aws_subnet.subnet_az2.id,
-      aws_subnet.subnet_az3.id,
-    ]
-    security_groups = [aws_security_group.sg.id]
-    ebs_volume_size = 100
+    instance_type   = var.instance_type
+    client_subnets  = var.subnets
+    security_groups = var.security_groups
+    ebs_volume_size = var.ebs_volume_size
   }
 
   configuration_info {
@@ -39,6 +35,18 @@ resource "aws_msk_cluster" "kafka" {
       client_broker = "TLS_PLAINTEXT" # or TLS or PLAINTEXT
     }
   }
+
+  open_monitoring {
+    prometheus {
+      jmx_exporter {
+        enabled_in_broker = true
+      }
+      node_exporter {
+        enabled_in_broker = true
+      }
+    }
+  }
+
   tags = {
     Name        = local.cluster_name
     Environment = var.environment

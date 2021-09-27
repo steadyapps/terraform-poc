@@ -1,3 +1,3 @@
 locals {
-  cluster_name = "${var.environment}-${var.cluster_name}"
+  cluster_name = "${var.cluster_name}-${var.environment}"
 }

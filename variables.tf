@@ -41,7 +41,7 @@ variable "msk_configurations" {
   }))
 }
 # clusters
-variable "msk_clusters" {
+variable "msk_old_clusters" {
   type = map(object({
     cluster_name           = string
     configuration_name     = string
@@ -52,10 +52,25 @@ variable "msk_clusters" {
     instance_type          = string
     create_cname           = bool
     cname_prefix           = string
-    subnets = map(object({
-      availability_zone = string
-      cidr              = string
-    }))
+    subnets                = list(string)
+    security_groups        = list(string)
+  }))
+  description = "MSK clusters"
+}
+
+variable "msk_clusters" {
+  type = map(object({
+    cluster_name           = string
+    configuration_name     = string
+    configuration_revision = any
+    kafka_version          = string
+    number_of_broker_nodes = number
+    kafka_version          = string
+    ebs_volume_size        = number
+    instance_type          = string
+    net_offset             = number
+    create_cname           = bool
+    cname_prefix           = string
   }))
   description = "MSK clusters"
 }
