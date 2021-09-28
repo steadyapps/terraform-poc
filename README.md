@@ -1,4 +1,4 @@
-# Usage
+# DevOps Usage
 
 Use your own backend config file with separate terraform statefile.  <br>
 Work on separate branch and the make pr to master. <br>
@@ -25,3 +25,11 @@ anatoliy:
 ```terraform init -backend-config=./vars/terraform-backend-prod-anatoliy.tfvars``` <br> 
 
 terraform plan -var-file=./vars/parameters-prod.tfvars
+
+# Develop
+
+terraform init -backend-config=./vars/terraform-backend-dev.tfvars
+
+terraform plan -var-file=./vars/parameters-dev.tfvars
+
+terraform apply -var-file=./vars/parameters-dev.tfvars
