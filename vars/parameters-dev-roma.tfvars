@@ -1,6 +1,81 @@
-environment = "dev"
-region      = "us-east-1"
+#MSK
 
+# domain      = "steadyappdev.com"
+environment = "develop-roma"
+region      = "us-east-1"
+domain      = "steadyappdev.com"
+# cluster_name = "kafka-cluster-dev-mirror"
+
+# kafka_version   = "2.2.1"
+# instance_type   = "kafka.m5.large"
+# ebs_volume_size = 100
+
+# vpc_id       = "vpc-0a655d3511e10849d"
+# EKS_VPC_CIDR = "10.17.0.0/16"
+
+# net_offset = 20
+
+
+#Chatbot
+
+# sns_topic_name = "terraform-poc"
+# org_name = "Steady"
+# workspace_name = "KafkaConsumerLags"
+# enabled = true
+# #logging_level =
+# slack_channel_id = "C01F9GW420L"
+# #slack_ids = 
+# slack_workspace_id = "T5V4PF198"
+
+#CLOUDWATCH
+
+# alarms = {
+#     alarm1 = {
+#         alarm_name          = "Terraform-POC-Alarm1"
+#         comparison_operator = "GreaterThanThreshold"
+#         evaluation_periods  = "1"
+#         metric_name         = "SumOffsetLag"
+#         namespace           = "AWS/Kafka"
+#         period              = "60"
+#         statistic           = "Sum"
+#         threshold           = "50000"
+#         alarm_description   = "test"
+#         actions_enabled     = "true"
+#         treat_missing_data = "ignore"
+#         dimensions = {
+#             "Consumer Group" = "Steady.Plaid.Transaction.Importer"
+#             "Cluster Name" = "prod-kafka-cluster"
+#             "Topic" = "Steady.Plaid.Webhook"
+#         }
+#         iam_role_name = "Terraform-POC-Alarm1-Role"
+#         iam_policy_name = "Terraform-POC-Alarm1-Policy"
+#         iam_policy_description = "test alarm 1"
+#     },
+#     alarm2 = {
+#         alarm_name          = "Terraform-POC-Import-Alarm2"
+#         comparison_operator = "GreaterThanThreshold"
+#         evaluation_periods  = "1"
+#         metric_name         = "SumOffsetLag"
+#         namespace           = "AWS/Kafka"
+#         period              = "60"
+#         statistic           = "Sum"
+#         threshold           = "666"
+#         alarm_description   = "test"
+#         actions_enabled     = "true"
+#         treat_missing_data = "ignore"
+#         dimensions = {
+#             "Consumer Group" = "Steady.Payments.Response.Consumer"
+#             "Cluster Name" = "prod-kafka-cluster"
+#             "Topic" = "Steady.Payments.WebhookReceived"
+#         }
+#         iam_role_name = "Terraform-POC-Import-Alarm2-Role"
+#         iam_policy_name = "Terraform-POC-Import-Alarm2-Policy"
+#         iam_policy_description = "test imported alarm2"
+#     },
+# }
+
+
+#RDS
 
 rds_clusters = {
  steady_opportunities_dev = {
@@ -77,51 +152,4 @@ rds_clusters = {
   #     },
   #   ]
   # },
-}
-vpc_id      = "vpc-0a655d3511e10849d"
-domain      = "steadyappdev.com"
-
-msk_configurations = {
-  msk_config = {
-    name                   = "mskconfig"
-    kafka_versions         = ["2.2.1"]
-    server_properties_file = "mskconfig.cfg"
-  }
-  msk_config_dev = {
-    name                   = "msk-config-dev"
-    kafka_versions         = ["2.2.1"]
-    server_properties_file = "msk-config-dev.cfg"
-  }
-}
-
-msk_old_clusters = {
-  main = {
-    cluster_name           = "kafka-cluster"
-    kafka_version          = "2.8.0"
-    configuration_name     = "mskconfig"
-    configuration_revision = 1
-    number_of_broker_nodes = 3
-    ebs_volume_size        = 200
-    instance_type          = "kafka.m5.large"
-    create_cname           = false
-    cname_prefix           = "kafka"
-    subnets                = ["subnet-01312c5632983f1e0", "subnet-0ca0e3548af75a253", "subnet-0753033c61743149d"]
-    security_groups        = ["sg-0e93fca7f916b7263"]
-  }
-}
-
-msk_clusters = {
-  mirror = {
-    cluster_name           = "kafka-cluster-mirror"
-    kafka_version          = "2.8"
-    configuration_name     = "mskconfig"
-    configuration_revision = "latest"
-    number_of_broker_nodes = 3
-    ebs_volume_size        = 200
-    instance_type          = "kafka.m5.large"
-    net_offset             = 120
-    net_offset             = 35
-    create_cname           = true
-    cname_prefix           = "kafka-mirror"
-  }
 }
