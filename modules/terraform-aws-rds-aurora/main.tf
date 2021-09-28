@@ -292,9 +292,9 @@ resource "aws_route53_record" "writer" {
   count   = var.create_cname ? 1 : 0
   zone_id = data.aws_route53_zone.main[0].zone_id
   #name    = "${var.name}-${var.environment}"
-  name    =  var.custom_cname ? var.cname_writer:"${var.name}-${var.environment}"
-  type    = "CNAME"
-  ttl     = "60"
+  name = var.custom_cname ? var.cname_writer : "${var.name}-${var.environment}"
+  type = "CNAME"
+  ttl  = "60"
   #records = element(concat(aws_rds_cluster.this.*.endpoint, [""]), 0)
   records = [element(concat(aws_rds_cluster.this.*.endpoint, [""]), 0)]
 
@@ -307,7 +307,7 @@ resource "aws_route53_record" "reader" {
   count   = var.create_cname ? 1 : 0
   zone_id = data.aws_route53_zone.main[0].zone_id
   #name    = "${var.name}-${var.environment}-read"
-  name    =  var.custom_cname ? var.cname_reader:"${var.name}-${var.environment}-read"
+  name    = var.custom_cname ? var.cname_reader : "${var.name}-${var.environment}-read"
   type    = "CNAME"
   ttl     = "60"
   records = [element(concat(aws_rds_cluster.this.*.reader_endpoint, [""]), 0)]

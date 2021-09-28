@@ -10,19 +10,19 @@ module "rds" {
   #   version = "~> 3.0"
   source = "./modules/terraform-aws-rds-aurora"
 
-  for_each            = var.rds_clusters
-  environment         = var.environment
-  domain              = var.domain
-  snapshot_identifier = each.value.snapshot_identifier
-  create_cname        = each.value.create_cname
-  custom_cname        = each.value.custom_cname
-  cname_reader        = each.value.cname_reader
-  cname_writer        = each.value.cname_writer
+  for_each             = var.rds_clusters
+  environment          = var.environment
+  domain               = var.domain
+  snapshot_identifier  = each.value.snapshot_identifier
+  create_cname         = each.value.create_cname
+  custom_cname         = each.value.custom_cname
+  cname_reader         = each.value.cname_reader
+  cname_writer         = each.value.cname_writer
   db_subnet_group_name = each.value.db_subnet_group_name
-  name                = each.value.name
-  engine              = each.value.engine
-  engine_version      = each.value.engine_version
-  instance_type       = each.value.instance_type
+  name                 = each.value.name
+  engine               = each.value.engine
+  engine_version       = each.value.engine_version
+  instance_type        = each.value.instance_type
   # storage_encrypted = each.value.storage_encrypted
   vpc_id  = each.value.vpc_id
   subnets = each.value.subnets
@@ -37,7 +37,7 @@ module "rds" {
   storage_encrypted      = true
   apply_immediately      = true
   monitoring_interval    = each.value.monitoring_interval
-  create_monitoring_role    = each.value.create_monitoring_role
+  create_monitoring_role = each.value.create_monitoring_role
   monitoring_role_arn    = each.value.monitoring_role_arn
 
   db_parameter_group_name         = each.value.db_parameter_group_name
@@ -46,9 +46,9 @@ module "rds" {
   enabled_cloudwatch_logs_exports = each.value.enabled_cloudwatch_logs_exports
   performance_insights_enabled    = each.value.performance_insights_enabled
   backup_retention_period         = each.value.backup_retention_period
-  preferred_backup_window = each.value.preferred_backup_window
-  preferred_maintenance_window = each.value.preferred_maintenance_window
-  skip_final_snapshot = each.value.skip_final_snapshot
+  preferred_backup_window         = each.value.preferred_backup_window
+  preferred_maintenance_window    = each.value.preferred_maintenance_window
+  skip_final_snapshot             = each.value.skip_final_snapshot
   copy_tags_to_snapshot           = each.value.copy_tags_to_snapshot
   create_random_password          = each.value.create_random_password
   username                        = each.value.username
