@@ -10,11 +10,15 @@ module "rds" {
   #   version = "~> 3.0"
   source = "./modules/terraform-aws-rds-aurora"
 
-  for_each            = var.rds
+  for_each            = var.rds_clusters
   environment         = var.environment
   domain              = var.domain
   snapshot_identifier = each.value.snapshot_identifier
   create_cname        = each.value.create_cname
+  custom_cname        = each.value.custom_cname
+  cname_reader        = each.value.cname_reader
+  cname_writer        = each.value.cname_writer
+  db_subnet_group_name = each.value.db_subnet_group_name
   name                = each.value.name
   engine              = each.value.engine
   engine_version      = each.value.engine_version
@@ -33,6 +37,8 @@ module "rds" {
   storage_encrypted      = true
   apply_immediately      = true
   monitoring_interval    = each.value.monitoring_interval
+  create_monitoring_role    = each.value.create_monitoring_role
+  monitoring_role_arn    = each.value.monitoring_role_arn
 
   db_parameter_group_name         = each.value.db_parameter_group_name
   db_cluster_parameter_group_name = each.value.db_cluster_parameter_group_name
@@ -40,6 +46,9 @@ module "rds" {
   enabled_cloudwatch_logs_exports = each.value.enabled_cloudwatch_logs_exports
   performance_insights_enabled    = each.value.performance_insights_enabled
   backup_retention_period         = each.value.backup_retention_period
+  preferred_backup_window = each.value.preferred_backup_window
+  preferred_maintenance_window = each.value.preferred_maintenance_window
+  skip_final_snapshot = each.value.skip_final_snapshot
   copy_tags_to_snapshot           = each.value.copy_tags_to_snapshot
   create_random_password          = each.value.create_random_password
   username                        = each.value.username
@@ -53,26 +62,29 @@ module "rds" {
 
 
 
-# module "cloudwatch" {
-#   source = "./modules/cloudwatch-alarms"  
-#   for_each = var.alarms  
-#   alarm_name          = each.value.alarm_name
-#   comparison_operator = each.value.comparison_operator
-#   evaluation_periods  = each.value.evaluation_periods
-#   metric_name         = each.value.metric_name
-#   namespace           = each.value.namespace
-#   period              = each.value.period
-#   statistic           = each.value.statistic
-#   threshold           = each.value.threshold
-#   alarm_description   = each.value.alarm_description
-#   actions_enabled     = each.value.actions_enabled
-#   alarm_actions       = [aws_sns_topic.test_alerts_topic.arn]
-#   ok_actions          = [aws_sns_topic.test_alerts_topic.arn]
-#   #alarm_actions       = each.value.alarm_actions
-#   #ok_actions          = each.value.ok_actions
-#   treat_missing_data = each.value.treat_missing_data
-#   dimensions = each.value.dimensions
-#   iam_role_name = each.value.iam_role_name
-#   iam_policy_name = each.value.iam_policy_name
-#   iam_policy_description = each.value.iam_policy_description
-# }  
+
+
+
+output "rds_clusters" {
+  value = tomap({
+    for k, v in module.rds : k => v.rds_cluster_arn
+  })
+}
+
+output "rds_cluster_instance_ids" {
+  value = tomap({
+    for k, v in module.rds : k => v.rds_cluster_instance_ids
+  })
+}
+
+output "rds_cname_reader" {
+  value = tomap({
+    for k, v in module.rds : k => v.cname_reader
+  })
+}
+
+output "rds_cname_writer" {
+  value = tomap({
+    for k, v in module.rds : k => v.cname_writer
+  })
+}

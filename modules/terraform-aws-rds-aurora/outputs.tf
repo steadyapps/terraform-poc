@@ -101,3 +101,15 @@ output "aws_secret" {
   description = "AWS secret with credentials"
   value       = aws_secretsmanager_secret.secret.*.arn
 }
+
+# CNAMEs
+output "cname_reader" {
+  description = "cname for reader"
+  value       = aws_route53_record.reader.*.fqdn
+}
+
+output "cname_writer" {
+  description = "cname for writer"
+  value       = aws_route53_record.writer.*.fqdn
+}
+

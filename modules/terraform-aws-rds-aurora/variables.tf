@@ -448,7 +448,20 @@ variable "create_cname" {
   default = null
 }
 
+variable "custom_cname" {
+  type    = bool
+  default = null
+}
+
 variable "domain" {
+  type    = string
+  default = null
+}
+variable "cname_reader" {
+  type    = string
+  default = null
+}
+variable "cname_writer" {
   type    = string
   default = null
 }

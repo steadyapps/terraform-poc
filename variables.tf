@@ -143,11 +143,15 @@ variable "environment" {
 #   type = string
 # }
 
-variable "rds" {
+variable "rds_clusters" {
   type = map(object({
     name                = string
     snapshot_identifier = string
-    create_cname        = string
+    create_cname        = bool
+    custom_cname        = bool
+    cname_reader        = string
+    cname_writer        = string
+    db_subnet_group_name = string
     engine              = string
     engine_version      = string
     instance_type       = string
@@ -161,11 +165,16 @@ variable "rds" {
     #alarm_actions       = any
     #ok_actions          = any
     monitoring_interval             = number
+    monitoring_role_arn = string
+    create_monitoring_role = bool
     db_parameter_group_name         = string
     db_cluster_parameter_group_name = string
     enabled_cloudwatch_logs_exports = list(string)
     performance_insights_enabled    = bool
     backup_retention_period         = number
+    preferred_backup_window = string
+    preferred_maintenance_window = string
+    skip_final_snapshot = bool
     copy_tags_to_snapshot           = bool
     create_random_password          = bool
     username                        = string
