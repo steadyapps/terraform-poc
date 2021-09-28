@@ -55,3 +55,26 @@ variable "EKS_VPC_CIDR" {
 variable "net_offset" {
   type = number
 }
+
+variable "configuration_name" {
+  type = string
+}
+
+variable "configuration_revision" {
+  type = any
+}
+
+variable "create_cname" {
+  type    = bool
+  default = false
+}
+
+variable "domain" {
+  type    = string
+  default = ""
+}
+
+variable "cname_prefix" {
+  type    = string
+  default = ""
+}
