@@ -3,27 +3,6 @@ variable "kafka_version" {
   default = "2.7.0"
 }
 
-variable "number_of_broker_nodes" {
-  type    = number
-  default = 3
-}
-
-variable "create_cname" {
-  type    = bool
-  default = false
-}
-
-variable "domain" {
-  type    = string
-  default = ""
-}
-
-variable "cname_prefix" {
-  type    = string
-  default = ""
-}
-
-
 variable "cluster_name" {
   type = string
 }
@@ -73,17 +52,29 @@ variable "EKS_VPC_CIDR" {
   type = string
 }
 
-variable "subnets" {
-  type = map(object({
-      availability_zone = string
-      cidr = string
-  }))
+variable "net_offset" {
+  type = number
 }
 
-variable "server_properties" {
-  default = <<PROPERTIES
-auto.create.topics.enable = true
-delete.topic.enable = true
-log.retention.ms = 259200000
-PROPERTIES
+variable "configuration_name" {
+  type = string
+}
+
+variable "configuration_revision" {
+  type = any
+}
+
+variable "create_cname" {
+  type    = bool
+  default = false
+}
+
+variable "domain" {
+  type    = string
+  default = ""
+}
+
+variable "cname_prefix" {
+  type    = string
+  default = ""
 }
