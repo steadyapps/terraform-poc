@@ -10,7 +10,7 @@ sg-025acdf466e719bc4
 
 #elasticache subnet group
 
-terraform-1.0.3 import -var-file=./vars/parameters-dev-roma.tfvars \
+terraform-1.0.3 import -var-file=./vars/parameters-dev.tfvars \
 'module.elasticache["redis-data-dev"].aws_elasticache_subnet_group.subnet-group' \
 data-dev-cache-subnet
 
@@ -60,3 +60,4 @@ redis-dev
 
 
 
+terraform-1.0.3 state rm 'module.elasticache["redis-data-dev"].aws_elasticache_subnet_group.subnet-group[0]'
