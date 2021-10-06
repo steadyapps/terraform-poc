@@ -124,3 +124,58 @@ variable "msk_clusters" {
   }))
   description = "MSK clusters"
 }
+
+# variable "redis_vpc" {
+#   type=string
+# }
+
+
+
+variable "elasticache_clusters" {
+  type = map(object({
+    redis_vpc                           = string
+    redis_ingress_cidr_blocks           = list(any)
+    redis_sg_name                       = string
+    redis_subnet_group_name             = string
+    redis_subnet_ids                    = list(any)
+    redis_cluster_name                  = string
+    redis_replication_group_id          = string
+    redis_replication_group_description = string
+    redis_number_cache_clusters         = number
+    redis_node_type                     = string
+    redis_engine_version                = string
+    redis_parameter_group_name          = string
+    redis_multi_az_enabled              = bool
+    redis_notification_topic_name       = string
+    create_redis_notification_topic     = bool
+    redis_notification_topic_arn        = string
+    #redis_desired_clusters = string
+    # redis_alarm_cpu_threshold = string
+    # redis_alarm_memory_threshold = string
+    # redis_cpu_alarm_name = string
+    # redis_cpu_alarm_description = string
+    # redis_memory_alarm_name = string
+    # redis_memory_alarm_description = string
+  }))
+}
+
+/* variable "elasticache_cloudwatch_alarms" {
+  type = map(object({
+    alarm_name          = string
+    comparison_operator = string
+    evaluation_periods  = string
+    metric_name         = string
+    namespace           = string
+    period              = string
+    statistic           = string
+    threshold           = string
+    alarm_description   = string
+    actions_enabled     = bool
+    alarm_actions       = string
+    ok_actions          = string
+    treat_missing_data  = string
+    dimensions          = any
+  }))
+} */
+
+

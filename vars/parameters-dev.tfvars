@@ -125,3 +125,65 @@ msk_clusters = {
     cname_prefix           = "kafka-mirror"
   }
 }
+
+elasticache_clusters = {
+
+  redis-data-dev = {
+
+    redis_vpc                 = "vpc-0f395c18a1fb58eef"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.17.0.0/16"]
+    redis_sg_name             = "terraform-20210427091825288600000001"
+    redis_subnet_group_name   = "data-dev-cache-subnet"
+    redis_subnet_ids = [
+      "subnet-0d51b68616ece619d",
+      "subnet-04786b40b4a210c72",
+      "subnet-0aa4da9b6ae57f16a",
+      "subnet-0fd1c4d295f041dd2",
+      "subnet-09c0f4eecbbae52de",
+      "subnet-06a84f34b3a25c8fe"
+    ]
+    redis_cluster_name                  = "redisClusterDataDev"
+    redis_replication_group_id          = "redis-data-dev"
+    redis_replication_group_description = "Redis Data Dev Cluster"
+    redis_number_cache_clusters         = 1
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = false
+    create_redis_notification_topic     = false
+    redis_notification_topic_name       = ""
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = "arn:aws:sns:us-east-1:133638536280:steady-dev-topic"
+
+  },
+
+  redis-dev = {
+
+    redis_vpc                 = "vpc-0f395c18a1fb58eef"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.17.0.0/16"]
+    redis_sg_name             = "terraform-20191215094027278900000001"
+    redis_subnet_group_name   = "dev-cache-subnet"
+    redis_subnet_ids = [
+      "subnet-0d51b68616ece619d",
+      "subnet-04786b40b4a210c72",
+      "subnet-0aa4da9b6ae57f16a",
+      "subnet-0fd1c4d295f041dd2",
+      "subnet-09c0f4eecbbae52de",
+      "subnet-06a84f34b3a25c8fe"
+    ]
+    redis_cluster_name                  = "redisClusterDev"
+    redis_replication_group_id          = "redis-dev"
+    redis_replication_group_description = "Redis Dev Cluster"
+    redis_number_cache_clusters         = 3
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "5.0.5"
+    redis_parameter_group_name          = "default.redis5.0.cluster.on"
+    redis_multi_az_enabled              = true
+    create_redis_notification_topic     = false
+    redis_notification_topic_name       = ""
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = "arn:aws:sns:us-east-1:133638536280:steady-dev-topic"
+
+  },
+
+}
