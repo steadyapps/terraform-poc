@@ -60,4 +60,4 @@ redis-dev
 
 
 
-terraform-1.0.3 state rm 'module.elasticache["redis-data-dev"].aws_elasticache_subnet_group.subnet-group[0]'
+#terraform-1.0.3 state rm 'module.elasticache["redis-data-dev"].aws_elasticache_subnet_group.subnet-group'
