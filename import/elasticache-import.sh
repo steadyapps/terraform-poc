@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-                redis-data-dev 
+                #redis-data-dev 
 
 #sg
 
@@ -30,7 +30,7 @@ redis-data-dev
 
 
 
-                redis-dev 
+                #redis-dev 
 
 #sg
 
