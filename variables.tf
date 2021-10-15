@@ -179,7 +179,7 @@ variable "elasticache_clusters" {
 } */
 
 
-variable "elasticsearch" {
+variable "elasticache_clusters" {
   type = map(object({
     domain              = string
     instance_count      = number
