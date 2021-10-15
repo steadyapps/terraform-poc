@@ -181,16 +181,14 @@ variable "elasticache_clusters" {
 
 variable "elasticsearch" {
   type = map(object({
-    variable "domain" {}
-    variable "instance_count" {}
-    variable "instance_type" {}
-    variable "subnet_ids" {
-      type = list
-    }
-    variable "ebs_volume_size" {}
-    variable "volume_type" {}
-    variable "tag_domain" {}
-    variable "env" {}
+    domain              = string
+    instance_count      = number
+    instance_type       = string
+    subnet_ids          = list(any)
+    ebs_volume_size     = number
+    volume_type         = string
+    tag_domain          = string
+    env                 = string
 
 
   }))
