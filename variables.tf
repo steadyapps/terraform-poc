@@ -149,6 +149,8 @@ variable "elasticache_clusters" {
     redis_notification_topic_name       = string
     create_redis_notification_topic     = bool
     redis_notification_topic_arn        = string
+    # create_redis_security_group         = bool
+    # create_redis_subnet_group = bool
     #redis_desired_clusters = string
     # redis_alarm_cpu_threshold = string
     # redis_alarm_memory_threshold = string
