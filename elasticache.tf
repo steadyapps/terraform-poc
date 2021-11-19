@@ -20,6 +20,7 @@ module "elasticache" {
   redis_parameter_group_name          = each.value.redis_parameter_group_name
   redis_multi_az_enabled              = each.value.redis_multi_az_enabled
   create_redis_notification_topic     = each.value.create_redis_notification_topic
+  create_redis_subnet_group     = each.value.create_redis_subnet_group
   redis_notification_topic_name       = each.value.redis_notification_topic_name
   redis_notification_topic_arn        = each.value.redis_notification_topic_arn
 

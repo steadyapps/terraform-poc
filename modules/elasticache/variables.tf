@@ -70,6 +70,10 @@ variable "create_redis_notification_topic" {
   type = bool
 }
 
+variable "create_redis_subnet_group" {
+  type = bool
+}
+
 variable "redis_multi_az_enabled" {
   type = bool
 }
