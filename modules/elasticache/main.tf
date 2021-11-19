@@ -25,7 +25,7 @@ resource "aws_security_group" "security-group" {
 
 # elasticache subnet group
 resource "aws_elasticache_subnet_group" "subnet-group" {
-  #count = var.create_redis_subnet_group ? 1 : 0
+  count = var.create_redis_subnet_group ? 1 : 0
   name       = var.redis_subnet_group_name
   subnet_ids = var.redis_subnet_ids
 }
@@ -39,6 +39,7 @@ resource "aws_sns_topic" "topic" {
 
 locals {
   created_sns_topic_arn = join(" ", [for topic in aws_sns_topic.topic : topic.arn])
+  created_subnet_group_id = join(" ", [for subnet-group in aws_elasticache_subnet_group.subnet-group : subnet-group.id])
 }
 
 /* resource "null_resource" "notification_topic_arn" {
@@ -58,9 +59,9 @@ resource "aws_elasticache_replication_group" "replication-group" {
   node_type                     = var.redis_node_type
   engine_version                = var.redis_engine_version
   parameter_group_name          = var.redis_parameter_group_name
-  # subnet_group_name             = var.create_redis_subnet_group ? aws_elasticache_subnet_group.subnet-group.id : var.redis_subnet_group_name
+  subnet_group_name             = var.create_redis_subnet_group ? local.created_subnet_group_id : var.redis_subnet_group_name
   # security_group_ids            = [var.create_redis_security_group ? aws_security_group.security-group.id : var.redis_sg_name]
-  subnet_group_name             = aws_elasticache_subnet_group.subnet-group.id
+  #subnet_group_name             = aws_elasticache_subnet_group.subnet-group.id
   security_group_ids            = [aws_security_group.security-group.id]
   maintenance_window            = "tue:03:30-tue:04:30"
   port                          = "6379"

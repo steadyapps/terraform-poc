@@ -34,15 +34,15 @@ redis-data-dev
 
 #sg
 
-terraform-1.0.3 import -var-file=./vars/parameters-dev.tfvars \
-'module.elasticache["redis-dev"].aws_security_group.security-group' \
+terraform-1.0.3 import -var-file=./vars/parameters-staging.tfvars \
+'module.elasticache["redis-hangfire-staging"].aws_security_group.security-group' \
 sg-0ef08ea2f3f9dbac1
 
 #elasticache subnet group
 
-terraform-1.0.3 import -var-file=./vars/parameters-dev.tfvars \
-'module.elasticache["redis-dev"].aws_elasticache_subnet_group.subnet-group' \
-dev-cache-subnet
+terraform-1.0.3 import -var-file=./vars/parameters-staging.tfvars \
+'module.elasticache["redis-newstaging"].aws_elasticache_subnet_group.subnet-group' \
+staging-cache-subnet
 
 
 #notification topic
@@ -54,10 +54,35 @@ dev-cache-subnet
 #cluster
 
 
-terraform-1.0.3 import -var-file=./vars/parameters-dev.tfvars \
-'module.elasticache["redis-dev"].aws_elasticache_replication_group.replication-group' \
-redis-dev
+terraform-1.0.3 import -var-file=./vars/parameters-staging.tfvars \
+'module.elasticache["redis-newstaging"].aws_elasticache_replication_group.replication-group' \
+redis-newstaging
 
 
 
 #terraform-1.0.3 state rm 'module.elasticache["redis-data-dev"].aws_elasticache_subnet_group.subnet-group'
+
+
+
+
+#redis-prod
+
+terraform-1.0.3 import -var-file=./vars/parameters-prod.tfvars \
+'module.elasticache["redis-prod"].aws_security_group.security-group' \
+sg-0eb3b9dcc8cb437cb
+
+#elasticache subnet group
+
+terraform-1.0.3 import -var-file=./vars/parameters-prod.tfvars \
+'module.elasticache["redis-prod"].aws_elasticache_subnet_group.subnet-group' \
+steady-private-cache-sn
+
+
+
+
+#cluster
+
+
+terraform-1.0.3 import -var-file=./vars/parameters-prod.tfvars \
+'module.elasticache["redis-prod"].aws_elasticache_replication_group.replication-group' \
+redis-prod
