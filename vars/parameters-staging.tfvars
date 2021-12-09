@@ -161,35 +161,35 @@ elasticache_clusters = {
   },
 
   
-  # redis-hangfire-staging = {
+  redis-hangfire-staging = {
 
-  #   redis_vpc                 = "vpc-0f395c18a1fb58eef"
-  #   redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.17.0.0/16"]
-  #   # create_redis_security_group = true
-  #   redis_sg_name             = "terraform-redis-hangfire-staging"
-  #   create_redis_subnet_group = true
-  #   redis_subnet_group_name   = "staging-redis-hangfire-subnet"
-  #   redis_subnet_ids = [
-  #     "subnet-0d51b68616ece619d",
-  #     "subnet-04786b40b4a210c72",
-  #     "subnet-0aa4da9b6ae57f16a",
-  #     "subnet-0fd1c4d295f041dd2",
-  #     "subnet-09c0f4eecbbae52de",
-  #     "subnet-06a84f34b3a25c8fe"
-  #   ]
-  #   redis_cluster_name                  = "redisClusterHangfireStaging"
-  #   redis_replication_group_id          = "redis-hangfire-staging"
-  #   redis_replication_group_description = "Redis Hangfire-Staging Cluster"
-  #   redis_number_cache_clusters         = 3
-  #   redis_node_type                     = "cache.t2.medium"
-  #   redis_engine_version                = "6.x"
-  #   redis_parameter_group_name          = "default.redis6.x.cluster.on"
-  #   redis_multi_az_enabled              = true
-  #   create_redis_notification_topic     = true
-  #   redis_notification_topic_name       = "steady-hangfire-staging-topic"
-  #   #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
-  #   redis_notification_topic_arn = ""
+    redis_vpc                 = "vpc-0f395c18a1fb58eef"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.17.0.0/16"]
+    # create_redis_security_group = true
+    redis_sg_name             = "terraform-redis-hangfire-staging"
+    create_redis_subnet_group = true
+    redis_subnet_group_name   = "staging-redis-hangfire-subnet"
+    redis_subnet_ids = [
+      "subnet-0d51b68616ece619d",
+      "subnet-04786b40b4a210c72",
+      "subnet-0aa4da9b6ae57f16a",
+      "subnet-0fd1c4d295f041dd2",
+      "subnet-09c0f4eecbbae52de",
+      "subnet-06a84f34b3a25c8fe"
+    ]
+    redis_cluster_name                  = "redisClusterHangfireStaging"
+    redis_replication_group_id          = "redis-hangfire-staging"
+    redis_replication_group_description = "Redis Hangfire-Staging Cluster"
+    redis_number_cache_clusters         = 1
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = false
+    create_redis_notification_topic     = true
+    redis_notification_topic_name       = "steady-hangfire-staging-topic"
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = ""
 
-  # },
+  },
 
 }
