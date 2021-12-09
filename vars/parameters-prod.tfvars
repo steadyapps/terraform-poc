@@ -214,33 +214,120 @@ elasticache_clusters = {
 
   },
   
-#   redis-hangfire-prod = {
+  redis-hangfire-beta = {
 
-#     redis_vpc                 = "vpc-025c4633aecf99ae2"
-#     redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.18.160.0/19", "10.18.128.0/19", "10.18.96.0/19", "10.15.0.0/16"]
-#     # create_redis_security_group = false
-#     create_redis_subnet_group = true
-#     redis_sg_name             = "terraform-redis-hangfire-prod"
-#     # create_redis_subnet_group = false
-#     redis_subnet_group_name   = "prod-redis-hangfire-subnet"
-#      redis_subnet_ids = [
-#       "subnet-0163f774a1da41e16",
-#       "subnet-080e79de488d69b89",
-#       "subnet-0830080431db0fd69"
-#     ]
-#     redis_cluster_name                  = "redisClusterHangfireProd"
-#     redis_replication_group_id          = "redis-hangfire-prod"
-#     redis_replication_group_description = "Redis Hangfire-Prod Cluster"
-#     redis_number_cache_clusters         = 3
-#     redis_node_type                     = "cache.r5.large"
-#     redis_engine_version                = "6.x"
-#     redis_parameter_group_name          = "default.redis6.x.cluster.on"
-#     redis_multi_az_enabled              = true
-#     create_redis_notification_topic     = true
-#     redis_notification_topic_name       = "steady-hangfire-staging-topic"
-#     #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
-#     redis_notification_topic_arn = ""
+    redis_vpc                 = "vpc-025c4633aecf99ae2"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.18.160.0/19", "10.18.128.0/19", "10.18.96.0/19", "10.15.0.0/16"]
+    # create_redis_security_group = false
+    create_redis_subnet_group = true
+    redis_sg_name             = "terraform-redis-hangfire-beta"
+    # create_redis_subnet_group = false
+    redis_subnet_group_name   = "beta-redis-hangfire-subnet"
+     redis_subnet_ids = [
+      "subnet-0163f774a1da41e16",
+      "subnet-080e79de488d69b89",
+      "subnet-0830080431db0fd69"
+    ]
+    redis_cluster_name                  = "redisClusterHangfireBeta"
+    redis_replication_group_id          = "redis-hangfire-beta"
+    redis_replication_group_description = "Redis Hangfire-Beta Cluster"
+    redis_number_cache_clusters         = 1
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = false
+    create_redis_notification_topic     = true
+    redis_notification_topic_name       = "steady-hangfire-beta-topic"
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = ""
 
-#   },
+  },
+  
+  redis-hangfire-beta2 = {
+
+    redis_vpc                 = "vpc-025c4633aecf99ae2"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.18.160.0/19", "10.18.128.0/19", "10.18.96.0/19", "10.15.0.0/16"]
+    # create_redis_security_group = false
+    create_redis_subnet_group = true
+    redis_sg_name             = "terraform-redis-hangfire-beta2"
+    # create_redis_subnet_group = false
+    redis_subnet_group_name   = "beta2-redis-hangfire-subnet"
+     redis_subnet_ids = [
+      "subnet-0163f774a1da41e16",
+      "subnet-080e79de488d69b89",
+      "subnet-0830080431db0fd69"
+    ]
+    redis_cluster_name                  = "redisClusterHangfireBeta2"
+    redis_replication_group_id          = "redis-hangfire-beta2"
+    redis_replication_group_description = "Redis Hangfire-Beta2 Cluster"
+    redis_number_cache_clusters         = 1
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = false
+    create_redis_notification_topic     = true
+    redis_notification_topic_name       = "steady-hangfire-beta2-topic"
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = ""
+
+  },
+  
+  redis-hangfire-preprod = {
+
+    redis_vpc                 = "vpc-025c4633aecf99ae2"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.18.160.0/19", "10.18.128.0/19", "10.18.96.0/19", "10.15.0.0/16"]
+    # create_redis_security_group = false
+    create_redis_subnet_group = true
+    redis_sg_name             = "terraform-redis-hangfire-preprod"
+    # create_redis_subnet_group = false
+    redis_subnet_group_name   = "preprod-redis-hangfire-subnet"
+     redis_subnet_ids = [
+      "subnet-0163f774a1da41e16",
+      "subnet-080e79de488d69b89",
+      "subnet-0830080431db0fd69"
+    ]
+    redis_cluster_name                  = "redisClusterHangfirePreprod"
+    redis_replication_group_id          = "redis-hangfire-preprod"
+    redis_replication_group_description = "Redis Hangfire-Preprod Cluster"
+    redis_number_cache_clusters         = 1
+    redis_node_type                     = "cache.t2.medium"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = false
+    create_redis_notification_topic     = true
+    redis_notification_topic_name       = "steady-hangfire-preprod-topic"
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = ""
+
+  },
+  
+  redis-hangfire-prod = {
+
+    redis_vpc                 = "vpc-025c4633aecf99ae2"
+    redis_ingress_cidr_blocks = ["172.42.0.0/16", "10.18.160.0/19", "10.18.128.0/19", "10.18.96.0/19", "10.15.0.0/16"]
+    # create_redis_security_group = false
+    create_redis_subnet_group = true
+    redis_sg_name             = "terraform-redis-hangfire-prod"
+    # create_redis_subnet_group = false
+    redis_subnet_group_name   = "prod-redis-hangfire-subnet"
+     redis_subnet_ids = [
+      "subnet-0163f774a1da41e16",
+      "subnet-080e79de488d69b89",
+      "subnet-0830080431db0fd69"
+    ]
+    redis_cluster_name                  = "redisClusterHangfireProd"
+    redis_replication_group_id          = "redis-hangfire-prod"
+    redis_replication_group_description = "Redis Hangfire-Prod Cluster"
+    redis_number_cache_clusters         = 3
+    redis_node_type                     = "cache.m6g.2xlarge"
+    redis_engine_version                = "6.x"
+    redis_parameter_group_name          = "default.redis6.x.cluster.on"
+    redis_multi_az_enabled              = true
+    create_redis_notification_topic     = true
+    redis_notification_topic_name       = "steady-hangfire-prod-topic"
+    #redis_notification_topic_name = "steady-data-redis-test-tf-topic"
+    redis_notification_topic_arn = ""
+
+  },
 
 }
